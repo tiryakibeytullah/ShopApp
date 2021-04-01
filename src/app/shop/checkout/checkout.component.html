@@ -1,0 +1,67 @@
+<navbar></navbar>
+
+<div class="container pt-100 mb-5 animate__animated animate__fadeInDown">
+    <div class="m-2 animate__animated animate__fadeInDown" *ngIf="orderSent">
+        <div class="alert alert-success text-center" role="alert">
+            <h1><i class="fa fa-shopping-cart"></i></h1>
+            <h4 class="alert-heading">Teşekkür Ederiz <i class="fa fa-check-circle"></i></h4>
+            <p>Siparişiniz ShopApp güvencesi ile kayıt edilmiştir. Bizi bu alışverişte de tercih ettiğiniz için teşekkür eder, bir sonraki alışverişlerinizde de sizleri aramızda görmekten gurur duyarız.</p>
+            <hr>
+            <button [routerLink]="['/shop']" class="btn btn-link p-0">Alışveriş'e devam etmek için
+                tıklayınız.</button>
+        </div>
+    </div>
+
+    <form *ngIf="!orderSent" #form="ngForm" (ngSubmit)="submitOrder(form)" class="m-3">
+        <h4 class="mb-4">Kişisel Bilgileriniz</h4>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="order.name" required>
+                <span *ngIf="submitted && name.invalid" class="text-danger">
+                    Lütfen adınızı giriniz ..
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" #address="ngModel" name="address" [(ngModel)]="order.address" required>
+                <span *ngIf="submitted && address.invalid" class="text-danger">
+                    Lütfen adresinizi giriniz ..
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">City</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" #city="ngModel" name="city" [(ngModel)]="order.city" required>
+                <span *ngIf="submitted && city.invalid" class="text-danger">
+                    Lütfen şehrinizi giriniz ..
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" #phone="ngModel" name="phone" [(ngModel)]="order.phone" required>
+                <span *ngIf="submitted && phone.invalid" class="text-danger">
+                    Lütfen telefon numaranızı giriniz ..
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">E-Mail</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" #email="ngModel" name="email" [(ngModel)]="order.email" required>
+                <span *ngIf="submitted && email.invalid" class="text-danger">
+                    Lütfen email adresinizi giriniz ..
+                </span>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary">Siparişi Tamamla</button>
+            <button type="button" [routerLink]="['/shop']" routerLinkActive="router-link-active"  class="btn btn-outline-info ml-2">Alışverişe Devam Et</button>
+        </div>
+    </form>
+</div>

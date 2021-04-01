@@ -1,0 +1,31 @@
+<div class="shadow p-2 mb-3 bg-white rounded">
+    <h5>{{ editing ? "Edit" : "Create" }} Product</h5>
+</div>
+
+<form #form="ngForm" (ngSubmit)="save(form)">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="product.name">
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="price" [(ngModel)]="product.price">
+            <div class="input-group-append">
+            <span class="input-group-text">TL</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Image Url</label>
+        <input type="text" class="form-control" name="imageUrl" [(ngModel)]="product.imageUrl">
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea cols="5" rows="5" class="form-control" name="description" [(ngModel)]="product.description"></textarea>
+    </div>
+    <div style="float: right;">
+        <button type="submit" class="btn btn-outline-primary">{{ editing ? "Edit" : "Create" }} Product</button>
+        <button class="btn btn-outline-warning mx-2" [routerLink]="['/admin/main/products']" routerLinkActive="router-link-active" >Cancel</button>
+    </div>
+</form>

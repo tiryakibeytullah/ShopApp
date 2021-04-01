@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col bg-dark p-2 text-white text-center">
+            Admin Panel Dashboard
+        </div>
+
+    </div>
+    <div class="row my-5">
+        <div class="col-md-3">
+            <button (click)="logout()" class="btn btn-outline-danger btn-block">Logout</button>
+            <button [routerLink]="['/shop']" routerLinkActive="router-link-active"  class="btn btn-outline-info btn-block">Shop</button>
+            <button [routerLink]="['/admin/main/products']" routerLinkActive="router-link-active"  class="btn btn-outline-success btn-block">Products</button>
+            <button [routerLink]="['/admin/main/categories']" routerLinkActive="router-link-active"  class="btn btn-outline-primary btn-block">Categories</button>
+            <button [routerLink]="['/admin/main/orders']" routerLinkActive="router-link-active"  class="btn btn-outline-warning btn-block">Orders</button>
+        </div>
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

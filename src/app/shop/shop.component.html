@@ -1,0 +1,70 @@
+<navbar></navbar>
+
+<div class="container pt-100 mb-5">
+    <div class="row">
+        <div class="col-3 mt-2 animate__animated animate__bounceInLeft">
+            <category-list (category)="getCategory($event)"></category-list>
+            <div class="mt-3">
+                <cart-summary></cart-summary>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <!-- 
+                    <div class="col-md-12" style="margin-left: 750px;">
+                    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+                        <div class="toast-header">
+                            <strong class="mr-auto">Bilgilendirme</strong>
+                            <small>2 sn önce</small>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body">
+                            <span *ngIf="selectedCategory"><b>{{selectedCategory.name}}</b> ile ilgili <b>{{products.length}}</b> adet ürün bulundu.</span>
+                            <span *ngIf="selectedCategory==null"><b>{{products.length}}</b> adet ürün bulundu.</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <div class="col-md-12 mb-2 ml-3 alert alert-info animate__animated animate__fadeInDown" role="alert" id="productLengthAlert">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <span *ngIf="selectedCategory"><b>{{selectedCategory.name}}</b> ile ilgili
+                                <b>{{selectedProducts.length}}</b> adet ürün bulundu.</span>
+                            <span *ngIf="selectedCategory==null"><b>{{selectedProducts.length}}</b> adet ürün bulundu.</span>
+                        </div>
+                        <div class="col-md-2 form-inline float-rigth m-0 p-0">
+                            <select class="form-control-sm" [value]="productsPerPage" (change)="changePageSize($event.target.value)">
+                                <option value="2">2 Tane</option>
+                                <option value="3">3 Tane</option>
+                                <option value="5">5 Tane</option>
+                                <option value="8">8 Tane</option>
+                                <option value="10">10 Tane</option>
+                            </select>
+                            <button type="button" class="ml-2 mb-1 close" id="closeAlert">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <product-list [products]="products"></product-list>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item mx-1">
+                        <a class="btn btn-outline-info disabled" href="#" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item mr-1" *ngFor="let page of pageNumbers"><button (click)="changePage(page)"
+                            class="btn btn-outline-info" [class.active]="page==selectedPage">
+                        {{ page }}
+                        </button>
+                    </li>
+                    <li class="page-item mr-1">
+                        <a class="btn btn-outline-info disabled" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

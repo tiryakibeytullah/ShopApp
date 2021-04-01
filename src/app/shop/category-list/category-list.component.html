@@ -1,0 +1,9 @@
+<div class="list-group list-group-flush">
+    <button class="list-group-item list-group-item-action" (click)="changeCategory()">
+        <i class="fa fa-arrow-right"></i> Tüm Kategoriler
+    </button>
+    <button *ngFor="let c of categories" (click)="changeCategory(c)"
+        class="list-group-item list-group-item-action" [class.active]="c==selectedCategory">
+        <i class="fa fa-arrow-right"></i> {{ c.name }}
+    </button>
+</div>

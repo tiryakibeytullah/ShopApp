@@ -1,0 +1,11 @@
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading"><i class="fa fa-shopping-cart"></i> Sepetim</h4>
+    <hr>
+    <span *ngIf="cart.itemCount>0">
+        <p>Sepetinizde <b>{{ cart.itemCount }}</b> adet ürün bulunmaktadır.</p>
+        <p class="mb-0">Toplam : <b>{{ cart.total }} TL</b></p>
+    </span>
+    <span *ngIf="cart.itemCount==0">
+        <p>Sepetinizde henüz ürün bulunmamaktadır.</p>
+    </span>
+</div>

@@ -1,0 +1,32 @@
+<div class="mb-2 animate__animated animate__backInRight" style="float: right;">
+    <button class="btn btn-outline-info" [routerLink]="['/admin/main/products/create']" routerLinkActive="router-link-active" >Ürün Ekle</button>
+</div>
+<table class="table table-hover table-striped animate__animated animate__zoomIn">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ürün</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of getProducts()">
+            <td>
+                <img src="assets/img/{{p.imageUrl}}" width="80" alt="p.name">
+            </td>
+            <td>{{ p.name }}</td>
+            <td><b>{{ p.price }} TL</b></td>
+            <td>{{ p.description }}</td>
+            <td>
+                <button class="btn btn-outline-danger btn-sm" (click)="deleteProduct(p)">
+                    <i class="fa fa-trash"></i>
+                </button>
+                <button class="btn btn-outline-warning btn-sm mx-2" [routerLink]="['/admin/main/products/edit',p.id]" routerLinkActive="router-link-active" >
+                    <i class="fa fa-edit"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

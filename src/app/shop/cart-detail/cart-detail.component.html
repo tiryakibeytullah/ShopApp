@@ -1,0 +1,78 @@
+<navbar></navbar>
+
+<div class="container pt-100 mb-5 animate__animated animate__fadeInDown">
+    <div class="row">
+        <div class="col-8">
+            <ng-container *ngIf="cart.itemCount>0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ürün</th>
+                            <th scope="col">Fiyat</th>
+                            <th scope="col">Miktar</th>
+                            <th scope="col">Toplam</th>
+                            <th scope="col">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cart.items">
+                            <td>
+                                <img src="assets/img/{{item.product.imageUrl}}" width="80" alt="item.product.name">
+                            </td>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.product.price }} TL</td>
+                            <td>
+                                <input type="text" style="width: 50px;" class="form-control" [value]="item.quantity" (change)="cart.updateQuantity(item.product, $event.target.value)">
+                            </td>
+                            <td><b>{{ item.quantity * item.product.price }} TL</b></td>
+                            <td>
+                                <button class="btn btn-outline-danger" (click)="cart.removeItem(item.product.id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+            <ng-container *ngIf="cart.itemCount==0">
+                <div class="alert alert-warning text-center" role="alert">
+                    <h1><i class="fa fa-shopping-cart"></i></h1>
+                    <h4 class="alert-heading">Sepetin şu an boş <i class="fa fa-times-circle"></i></h4>
+                    <p>Sepetini ShopApp'in fırsatlarla dolu dünyasından doldurmak için
+                        anasayfa'dan ürünleri incelemeye başlayabilirsin.</p>
+                    <hr>
+                    <button [routerLink]="['/shop']" class="btn btn-link p-0">Alışveriş'e devam etmek için
+                        tıklayınız.</button>
+                </div>
+            </ng-container>
+        </div>
+        <div class="col-4">
+            <ng-container *ngIf="cart.itemCount>0">
+                <div class="text-left">
+                    <h4>Sepet Özeti</h4>
+                </div>
+                <table class="table table-hover mt-4">
+                    <tbody>
+                        <tr>
+                            <th>Toplam Ürün</th>
+                            <td>{{cart.itemCount}}</td>
+                        </tr>
+                        <tr>
+                            <th>Toplam</th>
+                            <td>{{cart.total}} TL</td>
+                        </tr>
+                        <tr>
+                            <th>Kargo</th>
+                            <td>Bedava</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mt-3">
+                    <button [routerLink]="['/shop']" routerLinkActive="router-link-active"  class="btn btn-outline-primary btn-sm">Alışverişe Devam Et</button>
+                    <button [routerLink]="['/checkout']" routerLinkActive="router-link-active"  class="btn btn-outline-success btn-sm mx-2">Alışverişi Tamamla</button>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

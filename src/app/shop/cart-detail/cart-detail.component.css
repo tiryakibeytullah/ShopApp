@@ -1,0 +1,7 @@
+tbody tr td {
+    display: table-cell;
+    vertical-align: middle
+}
+tbody tr td b {
+    color: green;
+}

@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['/shop']" routerLinkActive="router-link-active">Shop App</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/shop']" routerLinkActive="router-link-active">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="router-link-active">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/checkout']" routerLinkActive="router-link-active">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/main">Admin</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Add Category</a>
+                        <a class="dropdown-item" href="#">Categories</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login <span class="text-white"><i class="fa fa-arrow-right"></i></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register <span class="text-white"><i class="fa fa-user-plus"></i></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout <span class="text-white"><i class="fa fa-times"></i></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
